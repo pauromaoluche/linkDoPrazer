@@ -1,3 +1,13 @@
+## v1.2.1 [2025-06-18 16:49:48]
+
+- **feat**: Instalando tailwind no projeto
+
+Arquivos modificados:
+- `package-lock.json`
+- `package.json`
+- `resources/css/app.css`
+- `tailwind.config.js`
+
 ## v1.1.1 [2025-06-18 16:46:13]
 
 - **feat**: instalando livewire
