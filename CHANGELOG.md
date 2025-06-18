@@ -1,3 +1,12 @@
+## v1.1.1 [2025-06-18 16:46:13]
+
+- **feat**: instalando livewire
+- Iniciando livewire no projeto para utilizar componentizacao
+
+Arquivos modificados:
+- `composer.json`
+- `composer.lock`
+
 # Changelog
 
 ## v1.0.1 [2025-06-18 16:44:29]
