@@ -17,3 +17,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+install_commit_helper.sh
+commit.sh
+commit_helper.py
