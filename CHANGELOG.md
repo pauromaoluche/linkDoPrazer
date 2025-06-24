@@ -1,3 +1,17 @@
+## v1.4.1 [2025-06-24 19:38:42]
+
+- **feat**: Registro de usuario
+- Feita implementação de registro de usuario
+
+Arquivos modificados:
+- `.gitignore`
+- `app/Http/Controllers/Web/AuthController.php`
+- `app/Livewire/Forms/Web/AuthForm.php`
+- `app/Livewire/Web/Auth.php`
+- `resources/views/livewire/web/auth.blade.php`
+- `resources/views/web/auth/index.blade.php`
+- `routes/web.php`
+
 ## v1.3.1 [2025-06-24 09:40:35]
 
 - **feat**: Adicionando dependencia do tailwind
