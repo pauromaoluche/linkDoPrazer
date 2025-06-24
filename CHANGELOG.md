@@ -1,3 +1,17 @@
+## v1.3.1 [2025-06-24 09:40:35]
+
+- **feat**: Adicionando dependencia do tailwind
+- Adicionando tailwind no projeto
+
+Arquivos modificados:
+- `app/Http/Controllers/Web/HomeController.php`
+- `package-lock.json`
+- `package.json`
+- `postcss.config.js`
+- `resources/views/web/app.blade.php`
+- `resources/views/web/home/index.blade.php`
+- `routes/web.php`
+
 ## v1.2.1 [2025-06-18 16:49:48]
 
 - **feat**: Instalando tailwind no projeto
