@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Web;
+namespace App\Livewire\Web\Auth;
 
 use App\Livewire\Forms\Web\AuthForm;
 use App\Models\User;
@@ -10,10 +10,15 @@ use Illuminate\Support\Facades\Auth as LaravelAuth;;
 
 class Auth extends Component
 {
-    public $name, $email, $password, $password_confirmation;
-    public $modo = 'login'; // 'login' ou 'register'
 
     public AuthForm $form;
+
+    public string $login_email = '';
+    public string $login_password = '';
+    // 'login' ou 'register'
+    public $modo = 'login';
+
+    public bool $remember = false;
 
     public function register()
     {
@@ -25,7 +30,7 @@ class Auth extends Component
             'password' => $this->form->password,
         ]);
 
-        LaravelAuth::login($user);
+        LaravelAuth::login($user, $this->remember);
         session()->regenerate();
 
         return redirect()->to(route('index'));
@@ -33,14 +38,19 @@ class Auth extends Component
 
     public function login()
     {
-        $credentials = $this->validate([
-            'email' => 'required|email',
-            'password' => 'required',
+
+        $this->validate([
+            'login_email' => 'required|email',
+            'login_password' => 'required',
         ]);
 
-        if (!LaravelAuth::attempt($credentials)) {
+        if (!LaravelAuth::attempt([
+            'email' => $this->login_email,
+            'password' => $this->login_password,
+        ], $this->remember)) {
             throw ValidationException::withMessages([
-                'email' => 'Credenciais inválidas.',
+                'login_email' => 'O E-mail pode estar errado.',
+                'login_password' => 'A senha pode estar errada.',
             ]);
         }
 
@@ -49,18 +59,8 @@ class Auth extends Component
         return redirect()->route('index');
     }
 
-    public function resetForm()
-    {
-        $this->reset([
-            'email',
-            'password',
-            'name',
-            'password_confirmation',
-        ]);
-    }
-
     public function render()
     {
-        return view('livewire.web.auth');
+        return view('livewire.web.auth.auth');
     }
 }

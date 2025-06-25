@@ -20,20 +20,39 @@
                 </div>
             @endif
             <div>
-                <label for="email" class="block text-sm font-semibold mb-1">E-mail</label>
-                <input type="email" id="email" wire:model.lazy="form.email" name="email" required
-                    class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
-                @error('form.email')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
+                @if ($modo === 'register')
+                    <label for="email" class="block text-sm font-semibold mb-1">E-mail</label>
+                    <input type="email" id="email" wire:model.lazy="form.email" name="email" required
+                        class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    @error('form.email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                @else
+                    <label for="email" class="block text-sm font-semibold mb-1">E-mail</label>
+                    <input type="email" id="email" wire:model.lazy="login_email" name="email" required
+                        class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    @error('login_email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                @endif
             </div>
             <div>
-                <label for="senha" class="block text-sm font-semibold mb-1">Senha</label>
-                <input type="password" id="senha" wire:model.defer="form.password" name="senha" required
-                    class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
-                @error('form.password')
-                    <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
+                @if ($modo === 'register')
+                    <label for="senha" class="block text-sm font-semibold mb-1">Senha</label>
+                    <input type="password" id="senha" wire:model.defer="form.password" name="senha" required
+                        class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    @error('form.password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                @else
+                    <label for="senha" class="block text-sm font-semibold mb-1">Senha</label>
+                    <input type="password" id="senha" wire:model.defer="login_password" name="senha" required
+                        class="w-full px-4 py-2 rounded bg-cinzaCampo dark:bg-white/10 text-textoClaro dark:text-white placeholder-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    @error('login_password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                @endif
+
             </div>
             @if ($modo === 'register')
                 <div>
@@ -46,6 +65,12 @@
                     @enderror
                 </div>
             @endif
+            <div>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" wire:model.defer="remember" class="form-checkbox">
+                    <span class="ml-2 text-sm text-gray-600 dark:text-white">Lembrar de mim</span>
+                </label>
+            </div>
             <button type="submit"
                 class="w-full bg-redchat hover:bg-red-700 text-white font-semibold py-2 rounded transition">
                 {{ $modo === 'register' ? 'Registrar' : 'Logar' }}

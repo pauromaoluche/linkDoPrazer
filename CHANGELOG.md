@@ -1,3 +1,14 @@
+## v1.5.1 [2025-06-25 09:57:47]
+
+- **feat**: Login e remember-me
+- Corrigindo validacao de login, e implementando remember-me
+
+Arquivos modificados:
+- `app/Livewire/Web/Auth/Auth.php`
+- `config/session.php`
+- `resources/views/livewire/web/auth/auth.blade.php`
+- `resources/views/web/auth/index.blade.php`
+
 ## v1.4.1 [2025-06-24 19:38:42]
 
 - **feat**: Registro de usuario
