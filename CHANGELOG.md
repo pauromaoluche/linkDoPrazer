@@ -1,3 +1,14 @@
+## v1.10.1 [2025-06-25 10:53:38]
+
+- **feat**: Criando resto dos relacionamentos e tabelas
+
+Arquivos modificados:
+- `app/Models/CategoryRoom.php`
+- `app/Models/ChatRoom.php`
+- `app/Models/Message.php`
+- `app/Models/User.php`
+- `database/migrations/2025_06_25_134645_create_messages_table.php`
+
 ## v1.9.1 [2025-06-25 10:45:54]
 
 - **feat**: Relacionamento de usuario e salas
