@@ -1,3 +1,15 @@
+## v1.8.1 [2025-06-25 10:41:10]
+
+- **feat**: Categorias e salas
+
+Arquivos modificados:
+- `app/Models/CategoryRoom.php`
+- `app/Models/ChatRoom.php`
+- `database/migrations/2025_06_25_133442_create_category_rooms_table.php`
+- `database/migrations/2025_06_25_133810_create_chat_rooms_table.php`
+- `database/seeders/CategoryRoomSeeder.php`
+- `database/seeders/ChatRoomSeeder.php`
+
 ## v1.7.1 [2025-06-25 10:36:45]
 
 - **feat**: Model e migration de categorty_room
