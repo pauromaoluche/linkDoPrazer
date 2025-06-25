@@ -12,6 +12,7 @@ class ChatRoom extends Model
     protected $fillable = [
         'category_room_id',
         'users',
+        'room_id_category',
         'created_at',
         'updated_at'
     ];
@@ -21,7 +22,7 @@ class ChatRoom extends Model
         'updated_at'
     ];
 
-    public function category(): BelongsTo
+    public function category_room(): BelongsTo
     {
         return $this->belongsTo(CategoryRoom::class);
     }

@@ -1,3 +1,12 @@
+## v1.14.1 [2025-06-25 17:19:40]
+
+- **feat**: Adicionando id da sala na categoria
+
+Arquivos modificados:
+- `app/Models/ChatRoom.php`
+- `database/migrations/2025_06_25_133810_create_chat_rooms_table.php`
+- `database/seeders/ChatRoomSeeder.php`
+
 ## v1.13.1 [2025-06-25 17:15:32]
 
 - **feat**: Notificacao toast
