@@ -3,6 +3,7 @@
 namespace App\Livewire\Web\Components;
 
 use App\Models\CategoryRoom;
+use App\Models\ChatRoom;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -26,7 +27,61 @@ class Menu extends Component
 
     public function loadUserRooms()
     {
-        $this->userChatRooms = Auth::user()->chatRooms()->with('category')->get();
+        $this->userChatRooms = Auth::user()->chatRooms()->with('category_room')->get();
+    }
+
+    public function joinRoom($chat_room_id)
+    {
+        $user = Auth::user();
+
+        if (!Auth::check()) {
+            return redirect()->route('auth');
+        }
+
+        if ($user->chatRooms()->where('chat_rooms_id', $chat_room_id)->exists()) {
+            $this->loadUserRooms();
+            #return redirect()->route('sala.show', ['id' => $chat_room_id]);
+        }
+
+        if ($user->chatRooms()->count() >= 2) {
+            $this->dispatch('notification', [
+                'type' => 'warning',
+                'message' => 'Você atingiu o limites de salas gratuitas simultâneas!'
+            ]);
+            return;
+        }
+
+        $room = ChatRoom::find($chat_room_id);
+
+        if (!$room) {
+            $this->dispatch('notification', [
+                'type' => 'error',
+                'message' => 'Não foi possível entrar na sala.!'
+            ]);
+            return;
+        }
+
+        if ($room->users >= 25) {
+            $this->dispatch('notification', [
+                'type' => 'warning',
+                'message' => 'A sala está cheia, tente novamente mais tarde.'
+            ]);
+            return;
+        }
+
+        try {
+            $user->chatRooms()->attach($chat_room_id);
+            $room->increment('users');
+            
+            $this->loadUserRooms();
+            return redirect()->route('sala.show', ['id' => $chat_room_id]);
+        } catch (\Exception $e) {
+            $this->dispatch('notification', [
+                'type' => 'error',
+                'message' => $e->getMessage()
+            ]);
+            return;
+        }
     }
 
     public function render()

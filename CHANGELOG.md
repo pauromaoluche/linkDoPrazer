@@ -1,3 +1,13 @@
+## v1.15.1 [2025-06-25 17:20:35]
+
+- **feat**: Adicionado opcao de entrar na sala
+- Agora podemos entrar na sala, com limite de 2 salas por usuario
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `resources/views/web/app.blade.php`
+
 ## v1.14.1 [2025-06-25 17:19:40]
 
 - **feat**: Adicionando id da sala na categoria
