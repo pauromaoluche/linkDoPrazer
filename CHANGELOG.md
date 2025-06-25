@@ -1,3 +1,12 @@
+## v1.11.1 [2025-06-25 11:02:08]
+
+- **feat**: Populando banco com seeders
+
+Arquivos modificados:
+- `database/seeders/CategoryRoomSeeder.php`
+- `database/seeders/ChatRoomSeeder.php`
+- `database/seeders/DatabaseSeeder.php`
+
 ## v1.10.1 [2025-06-25 10:53:38]
 
 - **feat**: Criando resto dos relacionamentos e tabelas
