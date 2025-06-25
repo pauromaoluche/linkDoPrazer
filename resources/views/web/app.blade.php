@@ -14,6 +14,7 @@
 </head>
 
 <body class="text-white font-sans flex flex-col min-h-screen">
+    @livewire('web.components.menu')
     <main class="flex-grow">
         @yield('content')
     </main>

@@ -1,3 +1,13 @@
+## v1.6.1 [2025-06-25 10:16:45]
+
+- **feat**: Implementando menu
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `resources/views/web/app.blade.php`
+- `resources/views/web/auth/index.blade.php`
+
 ## v1.5.1 [2025-06-25 09:57:47]
 
 - **feat**: Login e remember-me
