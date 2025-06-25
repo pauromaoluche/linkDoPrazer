@@ -1,3 +1,12 @@
+## v1.9.1 [2025-06-25 10:45:54]
+
+- **feat**: Relacionamento de usuario e salas
+
+Arquivos modificados:
+- `app/Models/ChatRoom.php`
+- `app/Models/User.php`
+- `database/migrations/2025_06_25_134246_users_has_chat_rooms_table.php`
+
 ## v1.8.1 [2025-06-25 10:41:10]
 
 - **feat**: Categorias e salas
