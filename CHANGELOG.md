@@ -1,3 +1,12 @@
+## v1.13.1 [2025-06-25 17:15:32]
+
+- **feat**: Notificacao toast
+- Implementando notificacao toast
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/NotificationToast.php`
+- `resources/views/livewire/web/components/notification-toast.blade.php`
+
 ## v1.12.1 [2025-06-25 11:53:17]
 
 - **feat**: Implementando listagem de salas, e salas do usuario logado
