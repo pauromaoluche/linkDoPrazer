@@ -14,26 +14,26 @@
                         <div x-show="open" @click.away="open = false"
                             class="absolute left-0 mt-2 bg-white dark:bg-[#2a2a2a] text-black dark:text-white shadow-lg rounded-md w-60 z-50 py-2"
                             x-transition>
-                            {{-- @foreach ($categories as $category)
+                            @foreach ($categories as $category)
                                 <div x-data="{ submenuOpen: false }" class="relative group" @mouseenter="submenuOpen = true"
                                     @mouseleave="submenuOpen = false">
                                     <div
                                         class="px-4 py-2 font-semibold hover:bg-gray-100 dark:hover:bg-[#333] cursor-pointer">
-                                        {{ $category['name'] }}
+                                        {{ $category->name }}
                                     </div>
                                     <div x-show="submenuOpen"
                                         class="absolute left-full top-0 mt-0 bg-white dark:bg-[#2a2a2a] text-black dark:text-white shadow-lg rounded-md w-52 z-50"
                                         x-transition @mouseenter="submenuOpen = true" @mouseleave="submenuOpen = false">
-                                        @foreach ($category['chat_room'] as $room)
-                                            <a href="/sala/{{ $room['id'] }}"
+                                        @foreach ($category->chatRoom as $key => $room)
+                                            <a href="/sala/{{ $room->id }}"
                                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#333] text-sm">
-                                                {{ $category['name'] }} - {{ $room['id'] }} ({{ $room['users'] }} /
+                                                {{ $category->name }} - {{ $key + 1 }} ({{ $room['users'] }} /
                                                 25)
                                             </a>
                                         @endforeach
                                     </div>
                                 </div>
-                            @endforeach --}}
+                            @endforeach
                         </div>
                     </div>
                     <a href="#" class="hover:text-gray-300 dark:hover:text-red-400 font-medium">Temas</a>
@@ -42,6 +42,31 @@
                     <a href="#" class="hover:text-gray-300 dark:hover:text-red-400 font-medium">Planos</a>
                     <a href="#" class="hover:text-gray-300 dark:hover:text-red-400 font-medium">Ajuda</a>
                 </nav>
+                <div x-data="{ openUserRooms: false }" class="relative group">
+                    <button @click="openUserRooms = !openUserRooms"
+                        class="hover:text-gray-300 dark:hover:text-red-400 font-medium">
+                        Minhas Salas ▾
+                    </button>
+                    <div x-show="openUserRooms" @click.away="openUserRooms = false"
+                        class="absolute right-0 mt-2 bg-white dark:bg-[#2a2a2a] text-black dark:text-white shadow-lg rounded-md w-60 z-50 py-2"
+                        x-transition>
+                        @if ($userChatRooms > 0)
+                            @foreach ($userChatRooms as $room)
+                                <a href="/sala/{{ $room->id }}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#333] text-sm">
+                                    {{ $room->name }} <br>
+                                    <small class="text-xs text-gray-500 dark:text-gray-400">
+                                        ({{ $room->category->name ?? 'Sem categoria' }})
+                                    </small>
+                                </a>
+                            @endforeach
+                        @else
+                            <div class="px-4 py-2 text-sm text-gray-500 dark:text-gray-400">Você não está em nenhuma
+                                sala</div>
+                        @endif
+                    </div>
+                </div>
+
                 <div class="flex items-center space-x-4">
                     <button onclick="document.documentElement.classList.toggle('dark')"
                         class="bg-white dark:bg-gray-800 text-[#b91c1c] dark:text-white px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition">
