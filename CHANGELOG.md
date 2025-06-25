@@ -1,3 +1,48 @@
+## v1.11.1 [2025-06-25 11:02:08]
+
+- **feat**: Populando banco com seeders
+
+Arquivos modificados:
+- `database/seeders/CategoryRoomSeeder.php`
+- `database/seeders/ChatRoomSeeder.php`
+- `database/seeders/DatabaseSeeder.php`
+
+## v1.10.1 [2025-06-25 10:53:38]
+
+- **feat**: Criando resto dos relacionamentos e tabelas
+
+Arquivos modificados:
+- `app/Models/CategoryRoom.php`
+- `app/Models/ChatRoom.php`
+- `app/Models/Message.php`
+- `app/Models/User.php`
+- `database/migrations/2025_06_25_134645_create_messages_table.php`
+
+## v1.9.1 [2025-06-25 10:45:54]
+
+- **feat**: Relacionamento de usuario e salas
+
+Arquivos modificados:
+- `app/Models/ChatRoom.php`
+- `app/Models/User.php`
+- `database/migrations/2025_06_25_134246_users_has_chat_rooms_table.php`
+
+## v1.8.1 [2025-06-25 10:41:10]
+
+- **feat**: Categorias e salas
+
+Arquivos modificados:
+- `app/Models/CategoryRoom.php`
+- `app/Models/ChatRoom.php`
+- `database/migrations/2025_06_25_133442_create_category_rooms_table.php`
+- `database/migrations/2025_06_25_133810_create_chat_rooms_table.php`
+- `database/seeders/CategoryRoomSeeder.php`
+- `database/seeders/ChatRoomSeeder.php`
+
+## v1.7.1 [2025-06-25 10:36:45]
+
+- **feat**: Model e migration de categorty_room
+
 ## v1.6.1 [2025-06-25 10:16:45]
 
 - **feat**: Implementando menu
