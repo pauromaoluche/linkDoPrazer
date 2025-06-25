@@ -1,3 +1,7 @@
+## v1.7.1 [2025-06-25 10:36:45]
+
+- **feat**: Model e migration de categorty_room
+
 ## v1.6.1 [2025-06-25 10:16:45]
 
 - **feat**: Implementando menu
