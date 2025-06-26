@@ -1,3 +1,33 @@
+## v2.1.0 [2025-06-26 15:15:29]
+
+- **feat**: Layout e websocket
+- Implementando layout do chat, e websocket para mensagem em tempo real
+
+Arquivos modificados:
+- `app/Events/MessageSent.php`
+- `app/Http/Controllers/Web/ChatController.php`
+- `app/Livewire/Web/Chat/ChatBox.php`
+- `app/Livewire/Web/Chat/InputChat.php`
+- `app/Livewire/Web/Chat/OnlineUsers.php`
+- `app/Livewire/Web/Chat/OnlineVipUsers.php`
+- `bootstrap/app.php`
+- `composer.json`
+- `composer.lock`
+- `config/broadcasting.php`
+- `config/reverb.php`
+- `package-lock.json`
+- `package.json`
+- `resources/js/app.js`
+- `resources/js/bootstrap.js`
+- `resources/js/echo.js`
+- `resources/views/livewire/web/chat/chat-box.blade.php`
+- `resources/views/livewire/web/chat/input-chat.blade.php`
+- `resources/views/livewire/web/chat/online-users.blade.php`
+- `resources/views/livewire/web/chat/online-vip-users.blade.php`
+- `resources/views/pages/web/chat/chat-room.blade.php`
+- `routes/channels.php`
+- `routes/web.php`
+
 ## v2.0.1 [2025-06-26 08:55:39]
 
 - **improvement**: ajustes
