@@ -60,7 +60,9 @@
                                         ({{ $room->users }}/25)
                                     </a>
                                     <button title="Sair da sala"
-                                        class="text-red-600 hover:text-red-800 mr-2">
+                                        wire:click="leaveRoom({{ $room->id }})"
+                                        class="text-red-600
+                                        hover:text-red-800 mr-2">
                                         Sair
                                     </button>
                                 </div>

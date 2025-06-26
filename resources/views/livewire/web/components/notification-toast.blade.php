@@ -9,7 +9,7 @@
                 case 'error':
                     return 'bg-red-600';
                 case 'warning':
-                    return 'bg-yellow-500 text-black';
+                    return 'bg-yellow-600 text-black';
                 case 'info':
                 default:
                     return 'bg-blue-600';

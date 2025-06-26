@@ -1,3 +1,13 @@
+## v1.16.1 [2025-06-25 21:24:09]
+
+- **feat**: Sair da sala
+- Implementado melhoria e validação para o usuario sair da sala
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `resources/views/livewire/web/components/notification-toast.blade.php`
+
 ## v1.15.1 [2025-06-25 17:20:35]
 
 - **feat**: Adicionado opcao de entrar na sala
