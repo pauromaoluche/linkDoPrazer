@@ -59,8 +59,7 @@
                                         {{ $room->category_room->name }} - {{ $room->room_id_category }}
                                         ({{ $room->users }}/25)
                                     </a>
-                                    <button title="Sair da sala"
-                                        wire:click="leaveRoom({{ $room->id }})"
+                                    <button title="Sair da sala" wire:click="leaveRoom({{ $room->id }})"
                                         class="text-red-600
                                         hover:text-red-800 mr-2">
                                         Sair
@@ -81,10 +80,17 @@
                     class="bg-white dark:bg-gray-800 text-[#b91c1c] dark:text-white px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                     🌗 Tema
                 </button>
-                <a href="{{ route('auth') }}"
-                    class="bg-white dark:bg-red-600 text-[#b91c1c] dark:text-white px-5 py-2 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-red-700 transition">
-                    Login
-                </a>
+                @auth
+                    <button  wire:click="logout"
+                        class="bg-white dark:bg-red-600 text-[#b91c1c] dark:text-white px-5 py-2 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-red-700 transition">
+                        Sair
+                    </button>
+                @else
+                    <a href="{{ route('auth') }}"
+                        class="bg-white dark:bg-red-600 text-[#b91c1c] dark:text-white px-5 py-2 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-red-700 transition">
+                        Login
+                    </a>
+                @endauth
             </div>
         </div>
     </div>

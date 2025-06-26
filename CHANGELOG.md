@@ -1,3 +1,13 @@
+## v1.16.2 [2025-06-25 22:14:14]
+
+- **improvement**: Rota de logout
+
+Arquivos modificados:
+- `app/Http/Middleware/AuthenticateMiddleware.php`
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `routes/web.php`
+
 ## v1.16.1 [2025-06-25 21:24:09]
 
 - **feat**: Sair da sala
