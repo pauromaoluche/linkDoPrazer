@@ -13,7 +13,7 @@
             @livewire('web.chat.online-users')
             <div class="flex-1 flex flex-col">
                 {{-- @livewire('web.chat.chat-box') --}}
-                <livewire:web.chat.chat-box :chatRoom="$fixedChatRoom" id="chat-box-component-id" />
+                <livewire:web.chat.chat-box :chatRoom="$fixedChatRoom" />
                 {{-- <livewire:web.chat.input-chat :chatRoomId="1" /> --}}
                 {{-- @livewire('web.chat.input-chat') --}}
                 <livewire:web.chat.input-chat :chatRoomId="1" />

@@ -8,4 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/auth', [AuthController::class, 'index'])->middleware('guest')->name('auth');
-Route::get('/chat', [ChatController::class, 'index'])->middleware(AuthenticateMiddleware::class)->name('chat');
+//Route::get('/chat', [ChatController::class, 'index'])->middleware(AuthenticateMiddleware::class)->name('chat');
+Route::get('/chat/{categoriaSlug}({roomIdCategory})', [ChatController::class, 'show'])
+    ->middleware(AuthenticateMiddleware::class)
+    ->name('chat.show');

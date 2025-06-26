@@ -1,3 +1,15 @@
+## v2.2.0 [2025-06-26 15:46:14]
+
+- **feat**: Url personalizada
+- Feita url personalizada de acordo com a categoria e o numero da sala na categoria
+
+Arquivos modificados:
+- `app/Http/Controllers/Web/ChatController.php`
+- `app/Livewire/Web/Menu/Menu.php`
+- `database/seeders/CategoryRoomSeeder.php`
+- `resources/views/pages/web/chat/chat-room.blade.php`
+- `routes/web.php`
+
 ## v2.1.0 [2025-06-26 15:15:29]
 
 - **feat**: Layout e websocket

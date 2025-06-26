@@ -15,7 +15,7 @@ class CategoryRoomSeeder extends Seeder
     {
         $categories = [
             ['name' => 'Sexo Virtual', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Gay(s)', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'Gays', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Fetiches', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Relacionamentos', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Abertos', 'created_at' => now(), 'updated_at' => now()],
@@ -23,7 +23,7 @@ class CategoryRoomSeeder extends Seeder
             ['name' => 'Casais', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Solteiros', 'created_at' => now(), 'updated_at' => now()],
             ['name' => 'Aventuras', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'LGBTQIA+', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'LGBTQIA', 'created_at' => now(), 'updated_at' => now()],
         ];
 
         CategoryRoom::insert($categories);

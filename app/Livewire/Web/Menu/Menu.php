@@ -6,6 +6,7 @@ use App\Models\CategoryRoom;
 use App\Models\ChatRoom;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class Menu extends Component
 {
@@ -39,8 +40,7 @@ class Menu extends Component
         }
 
         if ($user->chatRooms()->where('chat_rooms_id', $chat_room_id)->exists()) {
-            $this->loadUserRooms();
-            #return redirect()->route('sala.show', ['id' => $chat_room_id]);
+            $this->redirectRouteComSlug($chat_room_id);
         }
 
         if ($user->chatRooms()->count() >= 2) {
@@ -74,7 +74,7 @@ class Menu extends Component
             $room->increment('users');
 
             $this->loadUserRooms();
-            return redirect()->route('sala.show', ['id' => $chat_room_id]);
+            $this->redirectRouteComSlug($chat_room_id);
         } catch (\Exception $e) {
             $this->dispatch('notification', [
                 'type' => 'error',
@@ -130,6 +130,19 @@ class Menu extends Component
             ]);
             return;
         }
+    }
+
+    private function redirectRouteComSlug($chat_room_id)
+    {
+        $room = ChatRoom::with('category_room')->findOrFail($chat_room_id);
+
+        $categoriaSlug = Str::slug($room->category_room->name);
+        $roomIdCategory = $room->room_id_category;
+
+        // Monta manualmente a URL com parênteses
+        $url = url("/chat/{$categoriaSlug}({$roomIdCategory})");
+
+        return redirect($url); // Livewire aceita redirecionamento assim
     }
 
     public function logout()
