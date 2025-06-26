@@ -1,22 +1,13 @@
 @extends('layouts.web')
 @section('title', 'Chat - Link do Prazer')
 @section('content')
-
-    <body
+    <div
         class="font-sans text-[#2d2d2d] dark:text-white bg-[#f5f5f5] dark:bg-gradient-to-br dark:from-black dark:to-red-950">
-
-        <!-- Chat Layout -->
         <div class="flex h-[calc(100vh-64px)]">
-        @php
-            $fixedChatRoom = \App\Models\ChatRoom::find(1);
-        @endphp
             @livewire('web.chat.online-users')
             <div class="flex-1 flex flex-col">
-                {{-- @livewire('web.chat.chat-box') --}}
-                <livewire:web.chat.chat-box :chatRoom="$fixedChatRoom" />
-                {{-- <livewire:web.chat.input-chat :chatRoomId="1" /> --}}
-                {{-- @livewire('web.chat.input-chat') --}}
-                <livewire:web.chat.input-chat :chatRoomId="1" />
+                <livewire:web.chat.chat-box :chatRoom="$chatRoom" />
+                <livewire:web.chat.input-chat :chatRoomId="$chatRoom->id" />
             </div>
             @livewire('web.chat.online-vip-users')
 
@@ -29,7 +20,5 @@
                 Alternar Tema
             </button>
         </div>
-    </body>
+    </div>
 @endsection
-
-

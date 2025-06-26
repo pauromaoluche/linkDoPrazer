@@ -1,3 +1,11 @@
+## v2.2.1 [2025-06-26 16:03:18]
+
+- **improvement**: Ajuste para entrar na sala de maneira dinamica
+
+Arquivos modificados:
+- `resources/views/livewire/web/chat/chat-box.blade.php`
+- `resources/views/pages/web/chat/chat-room.blade.php`
+
 ## v2.2.0 [2025-06-26 15:46:14]
 
 - **feat**: Url personalizada

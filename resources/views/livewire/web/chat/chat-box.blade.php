@@ -37,7 +37,7 @@
 
 <script type="module">
     // AQUI: Assumindo que você está usando chatroom.1 fixo para teste
-    Echo.channel("chatroom.1")
+    Echo.channel("chatroom.{{ $chatRoom->id }}")
         .listen('.message.sent', (e) => {
             Livewire.dispatch('novaMensagem');
         });
