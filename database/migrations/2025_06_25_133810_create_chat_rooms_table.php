@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('category_room_id');
             $table->foreign('category_room_id')->references('id')->on('category_rooms');
+            $table->integer('room_id_category');
             $table->integer('users')->default(0);
             $table->timestamps();
         });
