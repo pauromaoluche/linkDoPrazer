@@ -132,6 +132,16 @@ class Menu extends Component
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->to(route('index'));
+    }
+
     public function render()
     {
         return view('livewire.web.components.menu');
