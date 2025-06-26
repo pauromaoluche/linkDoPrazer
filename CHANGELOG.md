@@ -1,3 +1,41 @@
+## v1.16.1 [2025-06-25 21:24:09]
+
+- **feat**: Sair da sala
+- Implementado melhoria e validação para o usuario sair da sala
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `resources/views/livewire/web/components/notification-toast.blade.php`
+
+## v1.15.1 [2025-06-25 17:20:35]
+
+- **feat**: Adicionado opcao de entrar na sala
+- Agora podemos entrar na sala, com limite de 2 salas por usuario
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `resources/views/web/app.blade.php`
+
+## v1.14.1 [2025-06-25 17:19:40]
+
+- **feat**: Adicionando id da sala na categoria
+
+Arquivos modificados:
+- `app/Models/ChatRoom.php`
+- `database/migrations/2025_06_25_133810_create_chat_rooms_table.php`
+- `database/seeders/ChatRoomSeeder.php`
+
+## v1.13.1 [2025-06-25 17:15:32]
+
+- **feat**: Notificacao toast
+- Implementando notificacao toast
+
+Arquivos modificados:
+- `app/Livewire/Web/Components/NotificationToast.php`
+- `resources/views/livewire/web/components/notification-toast.blade.php`
+
 ## v1.12.1 [2025-06-25 11:53:17]
 
 - **feat**: Implementando listagem de salas, e salas do usuario logado
