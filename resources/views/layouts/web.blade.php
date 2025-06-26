@@ -14,12 +14,12 @@
 </head>
 
 <body class="text-white font-sans flex flex-col min-h-screen">
-    @livewire('web.components.menu')
+    @livewire('web.menu.menu')
     <main class="flex-grow">
         @yield('content')
     </main>
     
-    @livewire('web.components.notification-toast')
+    @livewire('web.notification.notification-toast')
     <!-- Footer -->
     <footer class="bg-black text-gray-400 text-center text-sm py-6 px-4">
         <p>&copy; 2025 Link do Prazer. Todos os direitos reservados.</p>
