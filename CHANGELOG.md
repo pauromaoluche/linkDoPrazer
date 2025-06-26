@@ -1,3 +1,16 @@
+## v2.0.0 [2025-06-26 08:53:04]
+
+- **compat**: Refatorando estrutura de paginas
+- Mudando estrutura das paginas principais
+
+Arquivos modificados:
+- `app/Http/Controllers/Web/AuthController.php`
+- `app/Http/Controllers/Web/HomeController.php`
+- `resources/views/layouts/web.app.blade.php`
+- `resources/views/pages/web/auth.blade.php`
+- `resources/views/pages/web/home.blade.php`
+- `resources/views/welcome.blade.php`
+
 ## v1.16.2 [2025-06-25 22:14:14]
 
 - **improvement**: Rota de logout
