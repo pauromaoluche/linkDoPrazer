@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Web\Components;
+namespace App\Livewire\Web\Menu;
 
 use App\Models\CategoryRoom;
 use App\Models\ChatRoom;
@@ -132,8 +132,18 @@ class Menu extends Component
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
+        return redirect()->to(route('index'));
+    }
+
     public function render()
     {
-        return view('livewire.web.components.menu');
+        return view('livewire.web.menu.menu');
     }
 }

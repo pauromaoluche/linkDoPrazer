@@ -9,6 +9,6 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('web.auth.index');
+        return view('pages.web.auth');
     }
 }

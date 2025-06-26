@@ -1,3 +1,40 @@
+## v2.0.1 [2025-06-26 08:55:39]
+
+- **improvement**: ajustes
+
+Arquivos modificados:
+- `app/Livewire/Web/Menu/Menu.php`
+- `app/Livewire/Web/Notification/NotificationToast.php`
+- `config/livewire.php`
+- `resources/views/layouts/web.blade.php`
+- `resources/views/livewire/web/menu/menu.blade.php`
+- `resources/views/livewire/web/notification/notification-toast.blade.php`
+- `resources/views/pages/web/auth.blade.php`
+- `resources/views/pages/web/home.blade.php`
+
+## v2.0.0 [2025-06-26 08:53:04]
+
+- **compat**: Refatorando estrutura de paginas
+- Mudando estrutura das paginas principais
+
+Arquivos modificados:
+- `app/Http/Controllers/Web/AuthController.php`
+- `app/Http/Controllers/Web/HomeController.php`
+- `resources/views/layouts/web.app.blade.php`
+- `resources/views/pages/web/auth.blade.php`
+- `resources/views/pages/web/home.blade.php`
+- `resources/views/welcome.blade.php`
+
+## v1.16.2 [2025-06-25 22:14:14]
+
+- **improvement**: Rota de logout
+
+Arquivos modificados:
+- `app/Http/Middleware/AuthenticateMiddleware.php`
+- `app/Livewire/Web/Components/Menu.php`
+- `resources/views/livewire/web/components/menu.blade.php`
+- `routes/web.php`
+
 ## v1.16.1 [2025-06-25 21:24:09]
 
 - **feat**: Sair da sala
