@@ -1,3 +1,16 @@
+## v2.2.2 [2025-06-26 17:50:32]
+
+- **improvement**: Retornar mensagens de acordo com a entrada na sala
+- Feita pequena melhoria para retornar apenas as mensagens a partir do momento que o usuario entrou na sala
+
+Arquivos modificados:
+- `app/Livewire/Web/Chat/ChatBox.php`
+- `app/Livewire/Web/Chat/InputChat.php`
+- `app/Livewire/Web/Menu/Menu.php`
+- `app/Models/User.php`
+- `database/migrations/2025_06_25_134246_users_has_chat_rooms_table.php`
+- `resources/views/livewire/web/menu/menu.blade.php`
+
 ## v2.2.1 [2025-06-26 16:03:18]
 
 - **improvement**: Ajuste para entrar na sala de maneira dinamica

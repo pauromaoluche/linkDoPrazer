@@ -27,7 +27,7 @@ class InputChat extends Component
             'message' => $this->message,
             'send_at' => now(),
             'user_id' => auth()->id(),
-            'chat_room_id' => 1,
+            'chat_room_id' => $this->chatRoomId,
         ]);
         
         broadcast(new MessageSent(auth()->user(), $msg))->toOthers();

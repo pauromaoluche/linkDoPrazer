@@ -55,7 +55,7 @@
                             @foreach ($userChatRooms as $room)
                                 <div
                                     class="flex items-center justify-between px-4 py-2 hover:bg-gray-100 dark:hover:bg-[#333] text-sm">
-                                    <a href="/sala/{{ $room->id }}" class="flex-1">
+                                    <a wire:click="joinRoom({{ $room->id }})">
                                         {{ $room->category_room->name }} - {{ $room->room_id_category }}
                                         ({{ $room->users }}/25)
                                     </a>
@@ -81,7 +81,7 @@
                     🌗 Tema
                 </button>
                 @auth
-                    <button  wire:click="logout"
+                    <button wire:click="logout"
                         class="bg-white dark:bg-red-600 text-[#b91c1c] dark:text-white px-5 py-2 rounded-full font-bold hover:bg-gray-100 dark:hover:bg-red-700 transition">
                         Sair
                     </button>

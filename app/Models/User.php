@@ -56,6 +56,7 @@ class User extends Authenticatable
     //relacionamento Many-to-<nay com salas do chat
     public function chatRooms(): BelongsToMany
     {
-        return $this->belongsToMany(ChatRoom::class, 'users_has_chat_rooms', 'users_id', 'chat_rooms_id');
+        return $this->belongsToMany(ChatRoom::class, 'users_has_chat_rooms', 'users_id', 'chat_rooms_id')
+            ->withPivot('entered_room');
     }
 }

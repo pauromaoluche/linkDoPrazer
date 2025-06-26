@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('users_has_chat_rooms', function (Blueprint $table) {
             $table->unsignedBigInteger('users_id'); // FK para users
             $table->unsignedBigInteger('chat_rooms_id'); // FK para chat_rooms
-            $table->timestamp('entered_room')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('entered_room');
 
             // Definindo as chaves estrangeiras
             $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');

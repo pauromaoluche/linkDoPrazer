@@ -70,7 +70,9 @@ class Menu extends Component
         }
 
         try {
-            $user->chatRooms()->attach($chat_room_id);
+            $user->chatRooms()->attach($chat_room_id, [
+                'entered_room' => now(),
+            ]);
             $room->increment('users');
 
             $this->loadUserRooms();
