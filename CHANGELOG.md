@@ -1,3 +1,13 @@
+## v2.2.3 [2025-06-27 08:43:46]
+
+- **improvement**: Deixando mais rapido o envio de mensagem e a maneira que recebemos ela
+
+Arquivos modificados:
+- `app/Events/MessageSent.php`
+- `app/Livewire/Web/Chat/ChatBox.php`
+- `app/Livewire/Web/Chat/InputChat.php`
+- `resources/views/livewire/web/chat/chat-box.blade.php`
+
 ## v2.2.2 [2025-06-26 17:50:32]
 
 - **improvement**: Retornar mensagens de acordo com a entrada na sala

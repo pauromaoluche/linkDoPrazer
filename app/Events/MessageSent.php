@@ -42,7 +42,8 @@ class MessageSent implements ShouldBroadcast, ShouldQueue
             ],
             'message' => [
                 'id' => $this->message->id,
-                'message' => $this->message->message
+                'message' => $this->message->message,
+                'send_at' => $this->message->send_at
             ]
         ];
     }

@@ -5,8 +5,7 @@
             <p class="text-sm">
                 <span class="font-bold text-[#b91c1c] dark:text-red-300">
                     {{ $message->user_id === auth()->id() ? 'Você' : $message->user->name }}:
-                </span>
-                {{ $message->message }}
+                </span> {{ $message->message }} {{ $message->send_at }}
             </p>
         </div>
     @endforeach
@@ -25,7 +24,7 @@
         }, delay);
     }
     document.addEventListener('livewire:initialized', () => {
-        Livewire.on('novaMensagem', () => {
+        Livewire.on('novaMensagemViaWs', () => {
             scrollToBottomWithDelay(400); // Recomendo um delay único para ambos
         });
 
@@ -36,9 +35,11 @@
 </script>
 
 <script type="module">
-    // AQUI: Assumindo que você está usando chatroom.1 fixo para teste
     Echo.channel("chatroom.{{ $chatRoom->id }}")
         .listen('.message.sent', (e) => {
-            Livewire.dispatch('novaMensagem');
+            Livewire.dispatch('novaMensagemViaWs', {
+                user: e.user,
+                message: e.message
+            });
         });
 </script>

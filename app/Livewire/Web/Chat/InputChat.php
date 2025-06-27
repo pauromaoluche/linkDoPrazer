@@ -31,9 +31,9 @@ class InputChat extends Component
         ]);
         
         broadcast(new MessageSent(auth()->user(), $msg))->toOthers();
-
+        
         $this->message = '';
-
+         
          $this->dispatch('messageSentLocally');
     }
 

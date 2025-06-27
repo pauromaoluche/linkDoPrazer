@@ -3,17 +3,22 @@
 namespace App\Livewire\Web\Chat;
 
 use App\Models\ChatRoom;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Collection;
 
 class ChatBox extends Component
 {
-
     public ChatRoom $chatRoom;
     public $messages;
-    public $entryTime;
+    public $userEntryTime;
 
-    protected $listeners = ['novaMensagem' => 'atualizarMensagens', 'messageSentLocally' => 'atualizarMensagens'];
+    protected $listeners = [
+        'novaMensagem' => 'atualizarMensagensParaRemetente',
+        'messageSentLocally' => 'atualizarMensagensParaRemetente',
+        'novaMensagemViaWs' => 'addMessageFromWebsocket',
+    ];
 
     public function mount(ChatRoom $chatRoom)
     {
@@ -21,28 +26,62 @@ class ChatBox extends Component
 
         $user = Auth::user();
         if ($user) {
-            $pivotData = $user->chatRooms()
+            $pivot = $user->chatRooms()
                 ->where('chat_rooms.id', $this->chatRoom->id)
                 ->first()?->pivot;
 
-            if ($pivotData) {
-                $this->entryTime = $pivotData->entered_room;
-            }
+            $this->userEntryTime = $pivot->entered_room;
         }
 
-        $this->messages = $this->chatRoom->messages()
-            ->where('send_at', '>=', $this->entryTime)
-            ->with('user')
-            ->get();
+        $this->loadMessages();
     }
 
-
-    public function atualizarMensagens()
+    protected function loadMessages()
     {
-        $this->messages = $this->chatRoom->messages()
-            ->where('send_at', '>=', $this->entryTime)
-            ->with('user')
-            ->get();
+        // Garante que sempre seja uma Collection desde o início
+        $this->messages = collect(
+            $this->chatRoom->messages()
+                ->with('user')
+                ->where('send_at', '>=', $this->userEntryTime)
+                ->get()
+        );
+    }
+
+    public function atualizarMensagensParaRemetente()
+    {
+        $this->loadMessages();
+    }
+
+    public function addMessageFromWebsocket($user, $message)
+    {
+        // Garante que $this->messages seja uma Collection válida
+        // if (! $this->messages instanceof Collection) {
+        //     $this->messages = collect($this->messages);
+        // }
+
+        $newMessage = (object)[
+            'id' => $message['id'],
+            'message' => $message['message'],
+            'user_id' => $user['id'],
+            'user' => (object)[
+                'id' => $user['id'],
+                'name' => $user['name'],
+            ],
+            'send_at' => isset($message['send_at']) ? Carbon::parse($message['send_at']) : Carbon::now(),
+        ];
+
+        // Ignora mensagens antigas
+        if ($newMessage->send_at->lt($this->userEntryTime)) {
+            return;
+        }
+
+        // Evita mensagens duplicadas
+        if ($this->messages->contains('id', $newMessage->id)) {
+            return;
+        }
+
+        // Adiciona a nova mensagem à Collection
+        $this->messages->push($newMessage);
     }
 
     public function render()
