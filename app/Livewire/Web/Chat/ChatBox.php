@@ -68,6 +68,8 @@ class ChatBox extends Component
                 'name' => $user['name'],
             ],
             'send_at' => isset($message['send_at']) ? Carbon::parse($message['send_at']) : Carbon::now(),
+            'media_path' => $messageData['media_path'] ?? null,
+            'media_type' => $messageData['media_type'] ?? null,
         ];
 
         // Ignora mensagens antigas

@@ -15,6 +15,8 @@ class Message extends Model
      */
     protected $fillable = [
         'message',
+        'media_path',
+        'media_type',
         'send_at',
         'user_id',
         'chat_room_id',

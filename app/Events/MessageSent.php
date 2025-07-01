@@ -12,6 +12,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
 
 class MessageSent implements ShouldBroadcast, ShouldQueue
 {
@@ -43,7 +44,9 @@ class MessageSent implements ShouldBroadcast, ShouldQueue
             'message' => [
                 'id' => $this->message->id,
                 'message' => $this->message->message,
-                'send_at' => $this->message->send_at
+                'send_at' => $this->message->send_at,
+                'media_path' => $this->message->media_path ? Storage::url($this->message->media_path) : null,
+                'media_type' => $this->message->media_type,
             ]
         ];
     }

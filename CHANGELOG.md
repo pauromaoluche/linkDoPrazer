@@ -1,3 +1,18 @@
+## v2.3.0 [2025-07-01 13:39:05]
+
+- **feat**: Envio de imagem
+- implementando envio de imagem no chat
+
+Arquivos modificados:
+- `app/Events/MessageSent.php`
+- `app/Livewire/Web/Chat/ChatBox.php`
+- `app/Livewire/Web/Chat/InputChat.php`
+- `app/Models/Message.php`
+- `config/livewire.php`
+- `database/migrations/2025_06_30_100328_add_media_to_messages_table.php`
+- `resources/views/livewire/web/chat/chat-box.blade.php`
+- `resources/views/livewire/web/chat/input-chat.blade.php`
+
 ## v2.2.3 [2025-06-27 08:43:46]
 
 - **improvement**: Deixando mais rapido o envio de mensagem e a maneira que recebemos ela
