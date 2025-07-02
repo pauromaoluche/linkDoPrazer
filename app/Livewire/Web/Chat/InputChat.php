@@ -14,13 +14,19 @@ use Illuminate\Validation\Rules\File;
 class InputChat extends Component
 {
     use WithFileUploads;
+
     public string $message = '';
     public int $chatRoomId;
     public $mediaFile;
 
+    // Novas propriedades para controlar o estado da gravação/câmera no frontend
+    public bool $isRecordingAudio = false;
+    public bool $isCapturingPhoto = false;
+    public ?string $mediaUploadType = null;
+
     protected $messages = [
-        'mediaFile.mimes' => 'O arquivo deve ser uma imagem (jpg, jpeg, png, gif) ou áudio (mp3, wav, ogg).',
-        'mediaFile.max' => 'O arquivo não pode ter mais de 10MB.',
+        'mediaFile.mimes' => 'O arquivo deve ser uma imagem (jpg, jpeg, png, gif), áudio (mp3, wav, ogg, webm) ou vídeo (mp4, webm).',
+        'mediaFile.max' => 'O arquivo não pode ter mais de 20MB.',
     ];
 
     protected function rules()
@@ -29,7 +35,7 @@ class InputChat extends Component
             'message' => 'nullable|string|max:1000',
             'mediaFile' => [
                 'nullable',
-                File::types(['jpg', 'jpeg', 'png', 'gif', 'mp3', 'wav', 'ogg'])
+                File::types(['jpg', 'jpeg', 'png', 'gif', 'mp3', 'wav', 'ogg', 'webm', 'mp4'])
                     ->max(20 * 1024),
             ],
         ];
@@ -54,12 +60,25 @@ class InputChat extends Component
 
         if ($this->mediaFile) {
             $room = ChatRoom::with('category_room')->findOrFail($this->chatRoomId);
-
             $categoryName = Str::slug($room->category_room->name);
-            $path = "$categoryName/{$room->id}";
 
-            $fullMimeType = $this->mediaFile->getMimeType();
-            $mediaType = explode('/', $fullMimeType)[0];
+            $fullMimeType = $this->mediaFile->getMimeType();  
+            $uploadedType = $this->mediaUploadType;
+
+            if ($uploadedType === 'photo') {
+                $mediaType = 'image';
+            } elseif ($uploadedType === 'audio') {
+                $mediaType = 'audio';
+            } elseif (Str::startsWith($fullMimeType, 'image')) {
+                $mediaType = 'image';
+            } elseif (Str::startsWith($fullMimeType, 'video')) {
+                $mediaType = 'video';
+            } else {
+                // Fallback para outros tipos ou se a flag não for reconhecida
+                $mediaType = explode('/', $fullMimeType)[0];
+            }
+
+            $path = "$categoryName/{$room->id}/$mediaType";
 
             $mediaPath = $this->mediaFile->store("chat-media/$path", 'public');
         }
@@ -77,8 +96,30 @@ class InputChat extends Component
 
         $this->message = '';
         $this->mediaFile = null;
+        $this->mediaUploadType = null;
+        $uploadedType = null;
+        $this->isRecordingAudio = false; // Resetar estado da gravação
+        $this->isCapturingPhoto = false; // Resetar estado da câmera
 
         $this->dispatch('messageSentLocally');
+    }
+
+    public function removeMediaFile()
+    {
+        $this->mediaFile = null;
+        $this->isRecordingAudio = false; // Resetar estado da gravação
+        $this->isCapturingPhoto = false; // Resetar estado da câmera
+    }
+
+    // Métodos para o frontend comunicar o estado de gravação/câmera
+    public function setIsRecordingAudio(bool $value)
+    {
+        $this->isRecordingAudio = $value;
+    }
+
+    public function setIsCapturingPhoto(bool $value)
+    {
+        $this->isCapturingPhoto = $value;
     }
 
     public function render()

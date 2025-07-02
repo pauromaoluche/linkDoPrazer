@@ -45,7 +45,7 @@ class MessageSent implements ShouldBroadcast, ShouldQueue
                 'id' => $this->message->id,
                 'message' => $this->message->message,
                 'send_at' => $this->message->send_at,
-                'media_path' => $this->message->media_path ? Storage::url($this->message->media_path) : null,
+                'media_path' => $this->message->media_path ?? null,
                 'media_type' => $this->message->media_type,
             ]
         ];

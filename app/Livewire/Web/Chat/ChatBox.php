@@ -54,10 +54,6 @@ class ChatBox extends Component
 
     public function addMessageFromWebsocket($user, $message)
     {
-        // Garante que $this->messages seja uma Collection válida
-        // if (! $this->messages instanceof Collection) {
-        //     $this->messages = collect($this->messages);
-        // }
 
         $newMessage = (object)[
             'id' => $message['id'],
@@ -68,8 +64,8 @@ class ChatBox extends Component
                 'name' => $user['name'],
             ],
             'send_at' => isset($message['send_at']) ? Carbon::parse($message['send_at']) : Carbon::now(),
-            'media_path' => $messageData['media_path'] ?? null,
-            'media_type' => $messageData['media_type'] ?? null,
+            'media_path' => $message['media_path'] ?? null,
+            'media_type' => $message['media_type'] ?? null,
         ];
 
         // Ignora mensagens antigas

@@ -1,28 +1,34 @@
 <div class="flex-1 overflow-y-auto p-6 space-y-4" id="mensagens">
     @foreach ($messages as $message)
         <div
-            class="bg-white dark:bg-white/10 rounded-lg p-3 max-w-xl {{ $message->user_id === auth()->id() ? 'ml-auto text-right' : '' }} shadow">
-            <p class="text-sm">
+            class="bg-white dark:bg-white/10 rounded-lg p-3 w-fit {{ $message->user_id === auth()->id() ? 'ml-auto text-right' : '' }} shadow">
+            <p class="text-sm  break-words">
                 <span class="font-bold text-[#b91c1c] dark:text-red-300">
                     {{ $message->user_id === auth()->id() ? 'Você' : $message->user->name }}:
                 </span> {{ $message->message }}
             </p>
 
-            {{-- Exibe a mídia (imagem ou áudio) --}}
             @if ($message->media_path)
-                <div class="mt-2 flex justify-end">
+                <div class="mt-2 flex {{ $message->user_id === auth()->id() ? 'justify-end' : 'justify-start' }}">
                     @if (Str::startsWith($message->media_type, 'image'))
-                        <img src=" {{ asset('storage/'.$message->media_path) }}" alt="Imagem do chat"
-                            class="max-w-xs md:max-w-sm rounded-lg shadow-md border border-gray-200 dark:border-gray-700"
-                            onload="scrollToBottomWithDelay(100)" {{-- Scroll após carregar a imagem --}}>
+                        <img src=" {{ asset('storage/' . $message->media_path) }}" alt="Imagem do chat"
+                            class="max-w-xs md:max-w-sm rounded-lg shadow-md dark:border-gray-700"
+                            onload="scrollToBottomWithDelay(100)">
                     @elseif (Str::startsWith($message->media_type, 'audio'))
-                        <audio controls src="{{ $message->media_path }}" class="w-full max-w-xs md:max-w-sm"
-                            onloadeddata="scrollToBottomWithDelay(100)" {{-- Scroll após carregar metadados do áudio --}}></audio>
+                        <audio controls src="{{ asset('storage/' . $message->media_path) }}"
+                            class="max-w-xs md:max-w-sm rounded-lg shadow-md dark:border-gray-700"
+                            onloadeddata="scrollToBottomWithDelay(100)"></audio>
+                        {{-- NOVO BLOCO PARA VÍDEO --}}
+                    @elseif (Str::startsWith($message->media_type, 'video'))
+                        <video controls src="{{ asset('storage/' . $message->media_path) }}"
+                            class="max-w-xs md:max-w-sm rounded-lg shadow-md dark:border-gray-700"
+                            onloadeddata="scrollToBottomWithDelay(100)"></video>
                     @else
-                        {{-- Fallback para outros tipos de mídia (se você implementar futuramente) --}}
+                        {{-- Fallback para tipos de mídia desconhecidos --}}
                         <p class="text-sm text-gray-600 dark:text-gray-400">
-                            <a href="{{ $message->media_path }}" target="_blank" class="text-blue-500 hover:underline">
-                                Abrir arquivo {{ $message->media_type }}
+                            <a href="{{ asset('storage/' . $message->media_path) }}" target="_blank"
+                                class="text-blue-500 hover:underline">
+                                Abrir arquivo ({{ $message->media_type }})
                             </a>
                         </p>
                     @endif

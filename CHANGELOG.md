@@ -1,3 +1,15 @@
+## v2.4.0 [2025-07-02 09:05:39]
+
+- **feat**: Invio de foto(camera) e audio
+
+Arquivos modificados:
+- `app/Events/MessageSent.php`
+- `app/Livewire/Web/Chat/ChatBox.php`
+- `app/Livewire/Web/Chat/InputChat.php`
+- `config/livewire.php`
+- `resources/views/livewire/web/chat/chat-box.blade.php`
+- `resources/views/livewire/web/chat/input-chat.blade.php`
+
 ## v2.3.0 [2025-07-01 13:39:05]
 
 - **feat**: Envio de imagem
