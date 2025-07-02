@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Web\Menu;
 
+use App\Events\ChatRoomUsers;
 use App\Models\CategoryRoom;
 use App\Models\ChatRoom;
 use Illuminate\Support\Facades\Auth;
@@ -75,6 +76,8 @@ class Menu extends Component
             ]);
             $room->increment('users');
 
+            broadcast(new ChatRoomUsers($chat_room_id));
+
             $this->loadUserRooms();
             $this->redirectRouteComSlug($chat_room_id);
         } catch (\Exception $e) {
@@ -115,6 +118,8 @@ class Menu extends Component
         try {
             $user->chatRooms()->detach($chat_room_id);
             $room->decrement('users');
+
+            broadcast(new ChatRoomUsers($chat_room_id));
 
             $this->dispatch('notification', [
                 'type' => 'success',

@@ -4,7 +4,7 @@
     <div
         class="font-sans text-[#2d2d2d] dark:text-white bg-[#f5f5f5] dark:bg-gradient-to-br dark:from-black dark:to-red-950">
         <div class="flex h-[calc(100vh-64px)]">
-            @livewire('web.chat.online-users')
+            @livewire('web.chat.online-users', ['chatRoom' => $chatRoom])
             <div class="flex-1 flex flex-col">
                 <livewire:web.chat.chat-box :chatRoom="$chatRoom" />
                 <livewire:web.chat.input-chat :chatRoomId="$chatRoom->id" />

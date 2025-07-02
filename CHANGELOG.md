@@ -1,3 +1,16 @@
+## v2.5.0 [2025-07-02 11:53:30]
+
+- **feat**: Lista de usuarios online
+- implementando lista de usuarios comuns onlines
+
+Arquivos modificados:
+- `app/Events/ChatRoomUsers.php`
+- `app/Livewire/Web/Chat/OnlineUsers.php`
+- `app/Livewire/Web/Menu/Menu.php`
+- `resources/views/livewire/web/chat/online-users.blade.php`
+- `resources/views/pages/web/chat/chat-room.blade.php`
+- `routes/channels.php`
+
 ## v2.4.0 [2025-07-02 09:05:39]
 
 - **feat**: Invio de foto(camera) e audio
